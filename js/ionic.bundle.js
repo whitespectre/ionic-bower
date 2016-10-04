@@ -3131,7 +3131,9 @@ function tapHandleFocus(ele) {
 
   } else if ((/^(input|textarea|ion-label)$/i).test(ele.tagName) || ele.isContentEditable) {
     triggerFocusIn = true;
-    ele.focus && ele.focus();
+    if(!ele.hasAttribute('no-focus')) {
+      ele.focus && ele.focus();
+    }
     ele.value = ele.value;
     if (tapEnabledTouchEvents) {
       tapTouchFocusedInput = ele;
