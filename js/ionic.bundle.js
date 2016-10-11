@@ -2780,10 +2780,14 @@ ionic.tap = {
            ionic.tap.isElementTapDisabled(e.target); // check if this element, or an ancestor, has `data-tap-disabled` attribute
   },
 
+  isContentEditable: function(ele) {
+    return ele.contentEditable === 'true' || (ele.parentElement && ele.parentElement.contentEditable === 'true');
+  },
+
   isTextInput: function(ele) {
     return !!ele &&
            (ele.tagName == 'TEXTAREA' ||
-            ele.contentEditable === 'true' ||
+            ionic.tap.isContentEditable(ele) ||
             (ele.tagName == 'INPUT' && !(/^(radio|checkbox|range|file|submit|reset|color|image|button)$/i).test(ele.type)));
   },
 
