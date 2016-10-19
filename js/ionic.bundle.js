@@ -7422,6 +7422,10 @@ ionic.scroll = {
         // if the element is positioned under the keyboard scroll it into view
         if (e.detail.isElementUnderKeyboard) {
 
+          if(e.target.hasAttribute('no-focus') || e.target.parentElement.hasAttribute('no-focus')) {
+            return;
+          }
+          
           ionic.requestAnimationFrame(function(){
             var pos = ionic.DomUtil.getOffsetTop(e.detail.target);
             setTimeout(function() {
