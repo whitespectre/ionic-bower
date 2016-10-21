@@ -55846,7 +55846,7 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
       }
 
       return $timeout(function() {
-        if (!modalStack.length) {
+        if (!modalStack.length || self.viewType !== 'modal') {
           $ionicBody.removeClass(self.viewType + '-open');
         }
         self.el.classList.add('hide');
