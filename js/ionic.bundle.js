@@ -55846,7 +55846,8 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
       }
 
       return $timeout(function() {
-        if (!modalStack.length || self.viewType !== 'modal') {
+        var filteredStack = modalStack.filter(function(item) { return item.viewType === self.viewType; });
+        if (!filteredStack.length) {
           $ionicBody.removeClass(self.viewType + '-open');
         }
         self.el.classList.add('hide');
